@@ -6,6 +6,12 @@ import { MapContainerComponent } from './map-container/map-container.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+
+  {
     path: 'map',
     component: MapContainerComponent
   },
