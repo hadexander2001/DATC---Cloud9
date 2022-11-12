@@ -1,0 +1,30 @@
+.main-container {
+    position: relative;
+    display: flex;
+    font-family: Calibri;
+    margin-left: 100px;
+
+
+    .title {
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+
+    .contact {
+        display: flex;
+        flex-direction: column;
+        margin-top: 100px;
+        margin-left: -300px;
+
+        .primary-button {
+            cursor: default;
+        }
+    }
+
+    .divider {
+        margin-top: -20px;
+        margin-left: -150px;
+        margin-bottom: -150px;
+        border-left: 5px solid black;
+    }
+}
