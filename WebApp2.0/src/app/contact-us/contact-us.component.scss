@@ -1,9 +1,9 @@
 .main-container {
     position: relative;
     display: flex;
+    flex-direction: row;
     font-family: Calibri;
     margin-left: 100px;
-
 
     .title {
         margin-top: 20px;
@@ -16,7 +16,8 @@
         margin-top: 100px;
         margin-left: -300px;
 
-        .primary-button {
+        button {
+            position: relative;
             cursor: default;
         }
     }
