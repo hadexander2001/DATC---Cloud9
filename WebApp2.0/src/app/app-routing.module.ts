@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { HomeComponent } from './home/home.component';
 import { MapContainerComponent } from './map-container/map-container.component';
+import { SubmitFormComponent } from './submit-form/submit-form.component';
 
 const routes: Routes = [
   {
@@ -22,8 +23,11 @@ const routes: Routes = [
   {
     path: 'contact-us',
     component: ContactUsComponent
+  },
+  {
+    path: 'submit',
+    component: SubmitFormComponent
   }
-
 ];
 
 @NgModule({
