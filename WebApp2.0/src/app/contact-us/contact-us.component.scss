@@ -1,31 +1,20 @@
 .main-container {
-    position: relative;
-    display: flex;
-    flex-direction: row;
+    margin-top: 100px;
+    text-align: center;
     font-family: Calibri;
-    margin-left: 100px;
 
     .title {
-        margin-top: 20px;
-        margin-bottom: 50px;
+        margin-top: 60px;
+        margin-bottom: 20px;
     }
 
     .contact {
-        display: flex;
-        flex-direction: column;
-        margin-top: 100px;
-        margin-left: -300px;
+        font-size: 20px;
+        font-weight: 700;
 
         button {
             position: relative;
             cursor: default;
         }
-    }
-
-    .divider {
-        margin-top: -20px;
-        margin-left: -150px;
-        margin-bottom: -150px;
-        border-left: 5px solid black;
     }
 }

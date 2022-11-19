@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  public title = 'AmbrosiaAlert';
+  public title = 'RagweedAlert';
   constructor() { }
 
   ngOnInit(): void {
