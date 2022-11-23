@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   alertListJson: any;
 
   ngOnInit(): void {
-    // this.getLocation(); 
   }
 
   public getLocation = (): void => {
