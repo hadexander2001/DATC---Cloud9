@@ -4,13 +4,13 @@ from django.db import models
 
 class Alert(models.Model):
 
+    time = models.DateTimeField(
+        null=False,
+        blank=False
+    )
     location = models.CharField(
         null=False,
         blank=False,
         max_length=50
     )
 
-    time = models.DateTimeField(
-        null=False,
-        blank=False
-    )
