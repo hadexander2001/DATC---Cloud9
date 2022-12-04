@@ -25,10 +25,7 @@ SECRET_KEY = 'django-insecure-hjaru6!y4&nl^ink=wk_-9pq9)^^&7v=i!m+rh*a3=wo48vrgo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    'localhost',
-    'https://ragweedalertsapi.azurewebsites.net/',
-]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -120,7 +117,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATIC_ROOT = BASE_DIR / 'static'
@@ -129,3 +126,5 @@ STATIC_ROOT = BASE_DIR / 'static'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# buna, jorje

@@ -1,23 +1,8 @@
-# API Container
-
-FROM python:3.7-alpine AS builder
-
+FROM python:3.10-alpine
 EXPOSE 8000
-
-WORKDIR /app 
-
+WORKDIR /app
 COPY requirements.txt /app
-
 RUN pip3 install -r requirements.txt --no-cache-dir
-
-COPY . /app 
-
-RUN mkdir static
-
-RUN python manage.py collectstatic --noinput
-
-COPY ./app/templates/ ./static 
-
-ENTRYPOINT ["python3"]
-
-CMD ["manage.py", "runserver", "0.0.0.0:8000"]
+COPY . /app
+# ENTRYPOINT ["python3"]
+CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000"]
