@@ -4,19 +4,13 @@ FROM node:18-alpine
 
 EXPOSE 4200
 
-RUN npm install -g @angular/cli
-
 WORKDIR /webapp
-
-COPY package.json .
-COPY package-lock.json .
-
-RUN npm install
 
 COPY . .
 
+RUN npm install
 
-CMD ["ng", "serve", "--host", "0.0.0.0"]
+CMD ["./node_modules/.bin/ng", "serve", "--host", "0.0.0.0", "--port", "4200"]
 
 
 
