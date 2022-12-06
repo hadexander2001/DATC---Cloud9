@@ -8,7 +8,12 @@ class Alert(models.Model):
         null=False,
         blank=False
     )
-    location = models.CharField(
+    location_latitude= models.FloatField(
+        null=False,
+        blank=False,
+        max_length=50
+    )
+    location_longitude= models.FloatField(
         null=False,
         blank=False,
         max_length=50

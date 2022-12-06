@@ -4,3 +4,7 @@ services:
         build: ./API/
         ports:
             - "8000:8000"
+    ui:
+        build: ./WebApp2.0/
+        ports:
+            - "8080:4200"
