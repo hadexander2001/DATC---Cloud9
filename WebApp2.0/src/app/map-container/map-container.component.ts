@@ -1,5 +1,9 @@
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Maps, Marker } from '@syncfusion/ej2-angular-maps';
+// import { world_map } from 'world-map.js';
+
+Maps.Inject(Marker);
 
 @Component({
   selector: 'app-map-container',
@@ -8,15 +12,40 @@ import { Component, OnInit } from '@angular/core';
   providers: [Location, { provide: LocationStrategy, useClass: PathLocationStrategy }],
 })
 export class MapContainerComponent implements OnInit {
+  public latitude: number | undefined;
+  public longitude: number | undefined;
+  public markerSettings: object | undefined;
+  public shapeData: object | undefined;
+  public shouldShowMarker = false;
 
-  constructor() {
-
-  }
-
+  constructor() { }
   ngOnInit(): void {
+    // this.shapeData = world_map;
+    if (!navigator.geolocation) {
+      return
+    }
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.latitude = position.coords.latitude;
+      this.longitude = position.coords.longitude
+    })
+
+    if (this.latitude && this.longitude) {
+      this.setMarker();
+    }
   }
 
-  // public getLocationNormalization = (): void => {
-  //   // this.location.prepareExternalUrl('/home')
-  // }
+  public setMarker() {
+    this.markerSettings = [{
+      visibility: true,
+      shape: 'Image',
+      imageUrl: 'maps/default-map/datetime/ballon.png',
+      dataSource: [
+        { latitude: this.latitude },
+        { longitude: this.longitude }
+      ],
+      animationDuration: 3
+    }],
+      this.shouldShowMarker = true;
+  }
+
 }

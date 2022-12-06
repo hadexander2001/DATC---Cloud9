@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { endpoints } from '../shared/endpoints';
+// import { HttpClient } from '@angular/common/http';
+// import { endpoints } from '../shared/endpoints';
 
 @Component({
   selector: 'app-home',
@@ -10,16 +10,7 @@ import { endpoints } from '../shared/endpoints';
 export class HomeComponent implements OnInit {
 
   public title = 'RagweedAlert';
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
-  alertListJson: any;
-
-  ngOnInit(): void {
-  }
-
-  public getLocation = (): void => {
-    this.alertListJson = this.http.get(endpoints.location()).subscribe(
-      data => this.alertListJson = data
-    )
-  }
+  ngOnInit(): void { }
 }
