@@ -5,8 +5,8 @@ services:
         build: ./API/
         ports:
             - "8000:8000"
-        volumes:
-            - /API:/app
+        # volumes:
+        #     - /API:/app
     ui:
         image: uiiimg.azurecr.io/uiimg:latest
         build: ./WebApp2.0/

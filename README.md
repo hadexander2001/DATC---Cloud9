@@ -9,7 +9,7 @@ Any user of the website can record and alert just but pressing a button. The ser
 Frontend: Angular, HTML, CSS;
 Backend: Django
 
-To run all webapp (ui + api) in localhost as a whole run *docker compose up --build*
+To run all webapp (ui + api) in localhost as docker instances run *docker compose up --build*
 
 Cloud deployed API: https://ragweedalertsapi.azurewebsites.net
 Cloud deployed UI: *in progress*
