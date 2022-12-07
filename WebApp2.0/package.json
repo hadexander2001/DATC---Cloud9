@@ -1,6 +1,5 @@
 {
   "dependencies": {
-<<<<<<< HEAD
     "@agm/core": "^3.0.0-beta.0",
     "@angular/animations": "^14.2.0",
     "@angular/cli": "^15.0.1",
@@ -30,14 +29,5 @@
     "karma-jasmine-html-reporter": "~2.0.0",
     "tslib": "^2.4.1",
     "typescript": "~4.7.2"
-=======
-    "@angular/cli": "^15.0.1",
-    "@angular/core": "^15.0.2",
-    "@angular/platform-browser-dynamic": "^15.0.2",
-    "@angular/router": "^15.0.2"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "^15.0.2"
->>>>>>> efa9b138560b52f51ed7817c359b5c40a7060923
   }
 }
