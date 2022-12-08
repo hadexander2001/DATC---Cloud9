@@ -12,11 +12,12 @@ export class MapContainerComponent implements OnInit {
   public latitude: number | undefined;
   public longitude: number | undefined;
   public markerSettings: object | undefined;
-  public isButtonClicked = false;
+  public map: any;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.map = L.map('map').setView([45.7489, 21.2087], 13)
     this.initializeMap();
   }
 
@@ -24,23 +25,19 @@ export class MapContainerComponent implements OnInit {
     navigator.geolocation.getCurrentPosition((position) => {
       this.latitude = position.coords.latitude;
       this.longitude = position.coords.longitude;
-      let mymap = L.map('map').setView([45.7489, 21.2087], 13) //initialize map
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      }).addTo(mymap);
-      if (this.isButtonClicked) {
-        var circle = L.circle([this.latitude, this.longitude], { //sets marker
-          color: 'red',
-          fillColor: '#f03',
-          fillOpacity: 0.5,
-          radius: 200
-        }).addTo(mymap);
-      }
+      }).addTo(this.map);
     })
   }
 
   public setMarker() {
-    this.isButtonClicked = true;
+    var circle = L.circle([this.latitude, this.longitude], {
+      color: 'red',
+      fillColor: '#f03',
+      fillOpacity: 0.5,
+      radius: 200
+    }).addTo(this.map);
   }
 }
