@@ -1,12 +1,18 @@
 <div class="map-container">
     <div>
         <img *ngIf="shouldShowMarker" src="../../assets/Image/RedFlag.svg">
-        <iframe class="map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89103.93341170714!2d21.146549865255476!3d45.74116295870146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4745677dcb0fb5a7%3A0x537faf6473936749!2sTimi%C8%99oara!5e0!3m2!1sen!2sro!4v1668197028144!5m2!1sen!2sro">
-        </iframe>
+
         <!-- <iframe class="map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2841985.379482566!2d22.777033074933367!3d45.9237774227927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff26958976c3%3A0x84ef4f92a804b194!2sRomania!5e0!3m2!1sen!2sro!4v1670338843397!5m2!1sen!2sro"
-            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89103.93341170714!2d21.146549865255476!3d45.74116295870146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4745677dcb0fb5a7%3A0x537faf6473936749!2sTimi%C8%99oara!5e0!3m2!1sen!2sro!4v1668197028144!5m2!1sen!2sro">
+        </iframe> -->
+        <!-- <google-map height="400px" width="750px" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
+            (mapMousemove)="move($event)">
+        </google-map> -->
+
+        <!-- <iframe class="map" src="https://maps.google.com/maps?q=45.7611222,21.2476847&z=15&output=embed"></iframe> -->
+
+        <h1>{{latitude}}</h1>
+        <h1>{{longitude}}</h1>
     </div>
     <button class="primary-button" routerLink="/submit" (click)="setMarker()">Signal Alert</button>
 </div>

@@ -1,7 +1,6 @@
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Maps, Marker } from '@syncfusion/ej2-angular-maps';
-// import { world_map } from 'world-map.js';
 
 Maps.Inject(Marker);
 
@@ -15,12 +14,10 @@ export class MapContainerComponent implements OnInit {
   public latitude: number | undefined;
   public longitude: number | undefined;
   public markerSettings: object | undefined;
-  public shapeData: object | undefined;
   public shouldShowMarker = false;
 
   constructor() { }
   ngOnInit(): void {
-    // this.shapeData = world_map;
     if (!navigator.geolocation) {
       return
     }
@@ -35,6 +32,7 @@ export class MapContainerComponent implements OnInit {
   }
 
   public setMarker() {
+
     this.markerSettings = [{
       visibility: true,
       shape: 'Image',
