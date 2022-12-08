@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@agm/core": "^3.0.0-beta.0",
     "@angular-devkit/build-angular": "^15.0.3",
     "@angular/common": "^15.0.3",
     "@angular/core": "^15.0.3",

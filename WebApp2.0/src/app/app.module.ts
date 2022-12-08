@@ -9,7 +9,6 @@ import { HomeComponent } from './home/home.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { HttpClientModule } from '@angular/common/http'
 import { GoogleMapsModule } from '@angular/google-maps';
-import { GoogleMapComponent } from './google-map/google-map.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +16,13 @@ import { GoogleMapComponent } from './google-map/google-map.component';
     TopBarComponent,
     MapContainerComponent,
     HomeComponent,
-    ContactUsComponent,
-    GoogleMapComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    GoogleMapsModule
+    GoogleMapsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
