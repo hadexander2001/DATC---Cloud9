@@ -4,13 +4,17 @@ FROM node:18-alpine
 
 EXPOSE 4200
 
-WORKDIR /webapp
+RUN mkdir -p /usr/src/app
+COPY . /usr/src/app
 
-COPY . .
+WORKDIR /usr/src/app
 
-RUN npm install --force
+RUN npm install @angular/cli
+RUN npm install
 
-CMD ["./node_modules/.bin/ng", "serve", "--host", "0.0.0.0", "--port", "4200"]
+RUN npm run build
+
+CMD ["npm", "start"]
 
 
 

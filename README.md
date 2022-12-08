@@ -12,7 +12,7 @@ Backend: Django
 To run all webapp (ui + api) in localhost as docker instances run *docker compose up --build*
 
 Cloud deployed API: https://ragweedalertsapi.azurewebsites.net
-Cloud deployed UI: *in progress*
+Cloud deployed UI: https://ragweedalertui.azurewebsites.net
 
 Cloud apps may run slowly due to the free service plan
 
