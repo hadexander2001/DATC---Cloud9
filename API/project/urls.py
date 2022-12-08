@@ -20,5 +20,6 @@ from app import apiviews, views
 urlpatterns = [
     path('', views.index),
     path('admin/', admin.site.urls),
-    path('alerts/', apiviews.alert_list)
+    path('alerts/', apiviews.alert_list),
+    path('alerts/<int:id>', apiviews.alert_detail),
 ]
