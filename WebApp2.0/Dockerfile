@@ -9,8 +9,8 @@ COPY . /usr/src/app
 
 WORKDIR /usr/src/app
 
-RUN npm install @angular/cli
-RUN npm install
+RUN npm install @angular/cli --force
+RUN npm install  --force
 
 RUN npm run build
 

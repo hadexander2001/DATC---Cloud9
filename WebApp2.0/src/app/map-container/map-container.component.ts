@@ -1,6 +1,7 @@
+import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 declare const L: any;
-// declare let mymap: any;
 
 @Component({
   selector: 'app-map-container',
@@ -9,14 +10,17 @@ declare const L: any;
 })
 
 export class MapContainerComponent implements OnInit {
-  public latitude: number | undefined;
-  public longitude: number | undefined;
-  public markerSettings: object | undefined;
+  public latitude!: number;
+  public longitude!: number;
+  public markerSettings!: object;
+  public date: Date = new Date();
+  public time!: number;
   public map: any;
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.getCurrentTime();
     this.map = L.map('map').setView([45.7489, 21.2087], 13)
     this.initializeMap();
   }
@@ -25,6 +29,7 @@ export class MapContainerComponent implements OnInit {
     navigator.geolocation.getCurrentPosition((position) => {
       this.latitude = position.coords.latitude;
       this.longitude = position.coords.longitude;
+
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -32,7 +37,20 @@ export class MapContainerComponent implements OnInit {
     })
   }
 
+  public getCurrentTime() {
+  }
+
   public setMarker() {
+    this.time = this.date.getTime()
+    this.apiService.postCoordinates(this.date, this.latitude, this.longitude).subscribe({
+      next: () => {
+        this.shouldShowMarker();
+      }
+    })
+
+  }
+
+  public shouldShowMarker() {
     var circle = L.circle([this.latitude, this.longitude], {
       color: 'red',
       fillColor: '#f03',
