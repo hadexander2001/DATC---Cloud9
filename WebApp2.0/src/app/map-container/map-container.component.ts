@@ -1,4 +1,3 @@
-import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 declare const L: any;
@@ -29,7 +28,6 @@ export class MapContainerComponent implements OnInit {
     navigator.geolocation.getCurrentPosition((position) => {
       this.latitude = position.coords.latitude;
       this.longitude = position.coords.longitude;
-
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -57,5 +55,6 @@ export class MapContainerComponent implements OnInit {
       fillOpacity: 0.5,
       radius: 200
     }).addTo(this.map);
+    circle.bindPopup("Latitude:" + this.latitude.toString() + "; " + "Longitude:" + this.longitude.toString()).openPopup();
   }
 }
