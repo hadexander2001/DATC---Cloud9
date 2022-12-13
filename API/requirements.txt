@@ -1,5 +1,5 @@
 django
 djangorestframework
-django_cors_headers
+django-cors-headers
 whitenoise
 psycopg2-binary
