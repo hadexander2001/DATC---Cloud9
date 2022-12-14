@@ -3,7 +3,8 @@ import requests
 import datetime
 
 alerts = requests.get('https://ragweedalertsapi.azurewebsites.net/alerts/?format=json')
-
+update = requests.get('https://ragweedalertsapi.azurewebsites.net/alerts')
+update
 alerts_json = json.loads(alerts.text)
 
 current_time = datetime.datetime.now()
@@ -27,4 +28,3 @@ for i in alerts_json:
         print('Old alert that needs deleting')
 
     print(f'---------\n')
-
