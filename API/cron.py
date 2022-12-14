@@ -4,7 +4,6 @@ import datetime
 
 alerts = requests.get('https://ragweedalertsapi.azurewebsites.net/alerts/?format=json')
 update = requests.get('https://ragweedalertsapi.azurewebsites.net/alerts')
-update
 alerts_json = json.loads(alerts.text)
 
 current_time = datetime.datetime.now()
