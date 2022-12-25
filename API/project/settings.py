@@ -89,6 +89,9 @@ DATABASES = {
         'HOST': 'ragweedalert-db.postgres.database.azure.com',
         'PORT': '5432',
         'OPTIONS': {'sslmode': 'require'},
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': 'mydatabase',
     }
 }
 
