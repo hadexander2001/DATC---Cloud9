@@ -15,13 +15,15 @@ export class MapContainerComponent implements OnInit {
   public date: Date = new Date();
   public time!: number;
   public map: any;
+  public signalList!: any;
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.getCurrentTime();
-    this.map = L.map('map').setView([45.7489, 21.2087], 13)
+    this.map = L.map('map').setView([45.7489, 21.2087], 13);
     this.initializeMap();
+    this.populateMap();
   }
 
   public initializeMap() {
@@ -42,19 +44,25 @@ export class MapContainerComponent implements OnInit {
     this.time = this.date.getTime()
     this.apiService.postCoordinates(this.date, this.latitude, this.longitude).subscribe({
       next: () => {
-        this.shouldShowMarker();
+        this.shouldShowMarker(this.latitude, this.longitude);
       }
     })
-
   }
 
-  public shouldShowMarker() {
-    var circle = L.circle([this.latitude, this.longitude], {
+  public shouldShowMarker(lat: number, lng: number) {
+    var circle = L.circle([lat = this.latitude, lng = this.longitude], {
       color: 'red',
       fillColor: '#f03',
       fillOpacity: 0.5,
       radius: 200
     }).addTo(this.map);
     circle.bindPopup("Latitude:" + this.latitude.toString() + "; " + "Longitude:" + this.longitude.toString()).openPopup();
+  }
+
+  public populateMap() {
+    this.apiService.getSignals().subscribe(data => {
+      // this.signalList = data;
+      this.shouldShowMarker(data.latitude, data.longitude);
+    });
   }
 }
