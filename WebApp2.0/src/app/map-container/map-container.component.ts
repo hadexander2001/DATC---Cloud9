@@ -15,7 +15,6 @@ export class MapContainerComponent implements OnInit {
   public date: Date = new Date();
   public time!: number;
   public map: any;
-  public signalList!: any;
 
   constructor(private apiService: ApiService) { }
 
@@ -50,19 +49,37 @@ export class MapContainerComponent implements OnInit {
   }
 
   public shouldShowMarker(lat: number, lng: number) {
-    var circle = L.circle([lat = this.latitude, lng = this.longitude], {
+    var circle = L.circle([lat, lng], {
       color: 'red',
       fillColor: '#f03',
       fillOpacity: 0.5,
       radius: 200
     }).addTo(this.map);
-    circle.bindPopup("Latitude:" + this.latitude.toString() + "; " + "Longitude:" + this.longitude.toString()).openPopup();
+    circle.bindPopup("Latitude:" + lat.toString() + "; " + "Longitude:" + lng.toString()).openPopup();
   }
 
   public populateMap() {
     this.apiService.getSignals().subscribe(data => {
-      // this.signalList = data;
-      this.shouldShowMarker(data.latitude, data.longitude);
+      const database = {
+        values: data,
+        [Symbol.iterator]() {
+          let index = 0;
+          return {
+            next: () => {
+              if (index < this.values.length) {
+                return { value: this.values[index++], done: false };
+              } else {
+                return { done: true };
+              }
+            }
+          }
+        }
+      };
+
+      for (let key of database) {
+        console.log(key);
+        this.shouldShowMarker(key.location_latitude, key.location_longitude);
+      }
     });
   }
 }
