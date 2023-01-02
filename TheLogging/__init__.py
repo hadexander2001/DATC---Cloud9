@@ -26,14 +26,18 @@ def connect():
 
 
 def the_updating():
-    cursor = connect().cursor()
-
-    cursor.execute("SELECT * FROM app_alert where time < now() - interval '1 minute'")
-    rows = cursor.fetchall()
+    conn = connect()
+    cursor = conn.cursor()
 
     print("Expired alerts:")
+    cursor.execute("select * from app_alert where time < now() - interval '1 minute'")
+    rows = cursor.fetchall()
+
     for row in rows:
-        print("Ragweed alert = (%s, %s, %s)" %(str(row[0]), str(row[1]), str(row[2])))
+        print("Ragweed alert # %s: time = %s, latitude = %s, longitude = %s" %(str(row[0]), str(row[1]), str(row[2]), str(row[3])))
+
+    cursor.execute("delete from app_alert where time < now() - interval '1 minute'")
+    conn.commit()
     cursor.close()
 
 
