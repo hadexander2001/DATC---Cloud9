@@ -5,10 +5,9 @@ services:
         build: ./API/
         ports:
             - "8000:8000"
-        # volumes:
-        #     - /API:/app
+
     ui:
-        image: uiimg.azurecr.io/uiimg:latest
+        image: alertui.azurecr.io/alertui:latest
         build: ./WebApp2.0/
         ports:
             - "8080:4200"

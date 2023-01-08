@@ -80,18 +80,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'alerts',
-#         'USER': 'django@ragweedalert-db',
-#         'PASSWORD': 'HadyGuri*',
-#         'HOST': 'ragweedalert-db.postgres.database.azure.com',
-#         'PORT': '5432',
-#         'OPTIONS': {'sslmode': 'require'},
-#     }
-# }
-
+# CURRENT CONFIG USES POSTGRESQL SERVER
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -101,10 +90,12 @@ DATABASES = {
         'HOST': 'ragweedalert-db.postgres.database.azure.com',
         'PORT': '5432',
         'OPTIONS': {'sslmode': 'require'},
+    }
+
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': 'mydatabase',
-    }
+    # }
 }
 
 
