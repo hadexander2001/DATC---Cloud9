@@ -1,14 +1,12 @@
 import datetime
 import logging
-import json
-import requests
 import datetime
 import psycopg2
 import azure.functions as func
 
 # Post alert:
     # {
-    #     "time": "2022-12-26T10:32:20.364522Z",
+    #     "time": "2023-01-08T10:32:20.364522Z",
     #     "location_latitude": 6.0,
     #     "location_longitude": 2.0
     # }
