@@ -1,7 +1,7 @@
 version: "3.9"
 services:
     api:
-        image: apiimg.azurecr.io/apiimg:latest
+        image: alertapi.azurecr.io/alertapi:latest
         build: ./API/
         ports:
             - "8000:8000"
