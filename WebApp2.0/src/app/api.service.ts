@@ -12,7 +12,7 @@ export class ApiService {
     constructor(private http: HttpClient) { }
 
     public postCoordinates = (date: Date, latitude: number, longitude: number) =>
-        this.http.post(endpoints.location(), {
+        this.http.post<MapResponse>(endpoints.location(), {
             time: date,
             location_latitude: latitude,
             location_longitude: longitude

@@ -9,17 +9,22 @@ declare const L: any;
 })
 
 export class MapContainerComponent implements OnInit {
+  monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   public latitude!: number;
   public longitude!: number;
   public markerSettings!: object;
   public date: Date = new Date();
-  public time!: number;
+  public currentMonth!: string;
+  public time!: string;
+  public currentDate!: String;
   public map: any;
+  public searchControl: any;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService) {
+    this.getCurrentDateAndTime();
+  }
 
   ngOnInit(): void {
-    this.getCurrentTime();
     this.map = L.map('map').setView([45.7489, 21.2087], 13);
     this.initializeMap();
     this.populateMap();
@@ -36,11 +41,20 @@ export class MapContainerComponent implements OnInit {
     })
   }
 
-  public getCurrentTime() {
+  public getCurrentDateAndTime() {
+    let hours = this.date.getHours().toString().padStart(2, '0');
+    let minutes = this.date.getMinutes().toString().padStart(2, '0');
+    let day = this.date.getDate().toString().padStart(2, '0');
+    const month = this.date.getMonth();
+    this.currentMonth = this.monthNames[month];
+    let year = this.date.getFullYear().toString().padStart(2, '0');
+    this.currentDate = `${day}/${this.currentMonth}/${year}`
+    this.time = `${hours}:${minutes}`
+    console.log(this.currentMonth);
   }
 
   public setMarker() {
-    this.time = this.date.getTime()
+    this.getCurrentDateAndTime();
     this.apiService.postCoordinates(this.date, this.latitude, this.longitude).subscribe({
       next: () => {
         this.shouldShowMarker(this.latitude, this.longitude);
@@ -55,7 +69,7 @@ export class MapContainerComponent implements OnInit {
       fillOpacity: 0.5,
       radius: 200
     }).addTo(this.map);
-    circle.bindPopup("Latitude:" + lat.toString() + "; " + "Longitude:" + lng.toString()).openPopup();
+    circle.bindPopup("Date and time:" + this.currentDate + " " + this.time + "; " + "Latitude:" + lat.toString() + "; " + "Longitude:" + lng.toString()).openPopup();
   }
 
   public populateMap() {
@@ -77,7 +91,6 @@ export class MapContainerComponent implements OnInit {
       };
 
       for (let key of database) {
-        console.log(key);
         this.shouldShowMarker(key.location_latitude, key.location_longitude);
       }
     });

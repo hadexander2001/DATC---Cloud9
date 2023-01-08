@@ -1,8 +1,11 @@
 body {
     background-color: #c5e7e2;
+    //  background: rgb(197, 231, 226);
+    // background: linear-gradient(153deg, rgba(197, 231, 226, 1) 0%, rgba(41, 100, 48, 1) 72%, rgba(47, 55, 48, 1) 100%);
 }
 
 .primary-button {
+    border-radius: 10px;
     justify-content: space-between;
     font-family: "Calibri";
     font-weight: 1000;
@@ -35,4 +38,9 @@ body {
 
 .text {
     color: #2f3730;
+}
+
+.footer {
+    background: rgb(197, 231, 226);
+    background: linear-gradient(153deg, rgba(197, 231, 226, 1) 0%, rgba(41, 100, 48, 1) 72%, rgba(47, 55, 48, 1) 100%);
 }

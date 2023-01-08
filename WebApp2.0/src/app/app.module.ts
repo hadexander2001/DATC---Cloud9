@@ -22,7 +22,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    GoogleMapsModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
