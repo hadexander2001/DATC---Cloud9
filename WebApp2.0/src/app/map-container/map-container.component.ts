@@ -20,8 +20,9 @@ export class MapContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCurrentTime();
-    this.map = L.map('map').setView([45.7489, 21.2087], 13)
+    this.map = L.map('map').setView([45.7489, 21.2087], 13);
     this.initializeMap();
+    this.populateMap();
   }
 
   public initializeMap() {
@@ -42,19 +43,43 @@ export class MapContainerComponent implements OnInit {
     this.time = this.date.getTime()
     this.apiService.postCoordinates(this.date, this.latitude, this.longitude).subscribe({
       next: () => {
-        this.shouldShowMarker();
+        this.shouldShowMarker(this.latitude, this.longitude);
       }
     })
-
   }
 
-  public shouldShowMarker() {
-    var circle = L.circle([this.latitude, this.longitude], {
+  public shouldShowMarker(lat: number, lng: number) {
+    var circle = L.circle([lat, lng], {
       color: 'red',
       fillColor: '#f03',
       fillOpacity: 0.5,
       radius: 200
     }).addTo(this.map);
-    circle.bindPopup("Latitude:" + this.latitude.toString() + "; " + "Longitude:" + this.longitude.toString()).openPopup();
+    circle.bindPopup("Latitude:" + lat.toString() + "; " + "Longitude:" + lng.toString()).openPopup();
+  }
+
+  public populateMap() {
+    this.apiService.getSignals().subscribe(data => {
+      const database = {
+        values: data,
+        [Symbol.iterator]() {
+          let index = 0;
+          return {
+            next: () => {
+              if (index < this.values.length) {
+                return { value: this.values[index++], done: false };
+              } else {
+                return { done: true };
+              }
+            }
+          }
+        }
+      };
+
+      for (let key of database) {
+        console.log(key);
+        this.shouldShowMarker(key.location_latitude, key.location_longitude);
+      }
+    });
   }
 }
